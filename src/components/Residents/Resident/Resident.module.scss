@@ -1,0 +1,39 @@
+@import '../../../general.scss';
+
+.resident {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  max-width: 150px;
+  border-radius: 15px;
+  background-color: #999;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:nth-child(-n + 5) {
+    margin-bottom: 15px;
+  }
+}
+
+.delete {
+  position: absolute;
+    top: 10px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    svg {
+      transition: .06s linear fill;
+    }
+    &:hover {
+      svg {
+        fill: $main-c;
+      }
+    }
+}
+
+.name {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: white;
+}

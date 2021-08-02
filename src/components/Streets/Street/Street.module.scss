@@ -1,0 +1,26 @@
+@import '../../../general.scss';
+
+.street {
+  width: 100%;
+  max-width: 660px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  padding: 20px;
+  &:nth-child(-n + 2) {
+    margin-bottom: 15px;
+  }
+  &:nth-child(odd) {
+    margin-right: 15px;
+  }
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+}
+
+.name {
+  text-align: start;
+}

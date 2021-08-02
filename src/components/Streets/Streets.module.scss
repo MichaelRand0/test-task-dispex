@@ -1,0 +1,10 @@
+@import '../../general.scss';
+
+.streets {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
