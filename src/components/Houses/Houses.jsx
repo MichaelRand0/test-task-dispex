@@ -3,7 +3,7 @@ import { House } from './House/House'
 
 export const Houses = () => {
   return (
-    <ul className={s.houses}>
+    <ul className={`${s.houses}`}>
       <House />
       <House />
     </ul>

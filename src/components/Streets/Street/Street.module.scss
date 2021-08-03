@@ -6,11 +6,18 @@
   border: 2px solid #333;
   border-radius: 15px;
   padding: 20px;
-  &:nth-child(-n + 2) {
-    margin-bottom: 15px;
-  }
+  overflow: hidden;
+  max-height: 82px;
+  margin-bottom: 20px;
   &:nth-child(odd) {
     margin-right: 15px;
+  }
+}
+
+.street_opened {
+  max-height: 100%;
+  .toggle {
+    transform: rotate(180deg);
   }
 }
 

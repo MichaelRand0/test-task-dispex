@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { getCompaniesThunk } from '../../redux/reducers/companiesReducer'
 import { Companies } from './Companies'
 import { changeCompanyId } from './../../redux/reducers/companiesReducer'
+import { getStreetsThunk } from './../../redux/reducers/streetsReducer'
 
 const CompaniesContainer = props => {
   useEffect(() => {
     props.getCompaniesThunk()
   }, [])
   return (
-    <Companies changeCompanyId={props.changeCompanyId} companiesArr={props.companiesArr} />
+    <Companies {...props} />
   )
 }
 
@@ -23,6 +24,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeCompanyId: id => dispatch(changeCompanyId(id)),
+    getStreetsThunk: companyId => dispatch(getStreetsThunk(companyId)),
     getCompaniesThunk: () => dispatch(getCompaniesThunk())
   }
 }
