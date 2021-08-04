@@ -2,18 +2,19 @@ import { Houses } from '../../Houses/Houses'
 import { Toggle } from '../../Toggle/Toggle'
 import s from './Street.module.scss'
 
-export const Street = ({ streetId, setResidents, companyId, getHousesThunk, getFlatsThunk, toggleStreetMenu, toggleHouseMenu, streetName, isOpen, houses, setCurrentFlat }) => {
+export const Street = (props) => {
   const toggleClickHandler = () => {
-    getHousesThunk(companyId, streetId)
-    toggleStreetMenu(streetId)
+    props.getHousesThunk(props.companyId, props.streetId)
+    props.toggleStreetMenu(props.streetId)
+    props.setCurrentStreet(props.streetId)
   }
   return (
-    <li id={streetId} className={`${s.street} ${isOpen ? s.street_opened : ''}`}>
+    <li id={props.streetId} className={`${s.street} ${props.isOpen ? s.street_opened : ''}`}>
       <div className={s.heading}>
-        <h2 className={s.name}>{`Улица ${streetName}`}</h2>
-        <Toggle clickHandler={toggleClickHandler} isOpen={isOpen} />
+        <h2 className={s.name}>{`Улица ${props.streetName}`}</h2>
+        <Toggle clickHandler={toggleClickHandler} isOpen={props.isOpen} />
       </div>
-      <Houses setCurrentFlat={setCurrentFlat} setResidents={setResidents} companyId={companyId} getFlatsThunk={getFlatsThunk} streetId={streetId} toggleHouseMenu={toggleHouseMenu} houses={houses} />
+      <Houses {...props} />
     </li>
   )
 }

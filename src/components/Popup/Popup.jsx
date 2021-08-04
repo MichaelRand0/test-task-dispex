@@ -14,7 +14,7 @@ export const Popup = props => {
           <CloseIcon />
         </button>
         <Residents deleteResidentThunk={props.deleteResidentThunk} openForm={props.openForm} residents={props.residents} />
-        {props.isPopupFormOpen ? <Forma residents={props.residents} setResidents={props.setResidents} currentFlat={props.currentFlat} postResidentThunk={props.postResidentThunk} closeForm={props.closeForm} /> : ''}
+        {props.isPopupFormOpen ? <Forma {...props} /> : ''}
       </div>
     </div>
   )

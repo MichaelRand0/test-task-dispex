@@ -6,6 +6,7 @@ export const House = (props) => {
   const toggleClickHandler = () => {
     props.getFlatsThunk(props.companyId, props.streetId, props.houseId)
     props.toggleHouseMenu(props.streetId, props.houseId)
+    props.setCurrentHouse(props.houseId)
   }
   return (
     <li id={props.id} className={`${s.house} ${props.isOpen ? s.house_opened : ''}`}>

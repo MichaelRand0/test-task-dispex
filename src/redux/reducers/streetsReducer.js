@@ -4,6 +4,8 @@ import {
 
 const initialState = {
   streetsArr: [],
+  currentStreet: null,
+  currentHouse: null,
   currentFlat: null
 }
 
@@ -12,12 +14,28 @@ const TOGGLE_STREET_MENU = 'TOGGLE_STREET_MENU'
 const TOGGLE_HOUSE_MENU = 'TOGGLE_HOUSE_MENU'
 const SET_HOUSES = 'SET_HOUSES'
 const SET_FLATS = 'SET_FLATS'
+const SET_CURRENT_STREET = 'SET_CURRENT_STREET'
+const SET_CURRENT_HOUSE = 'SET_CURRENT_HOUSE'
 const SET_CURRENT_FLAT = 'SET_CURRENT_FLAT'
 
 export const setStreets = arr => {
   return {
     type: SET_STREETS,
     payload: arr
+  }
+}
+
+export const setCurrentStreet = id => {
+  return {
+    type: SET_CURRENT_STREET,
+    payload: id
+  }
+}
+
+export const setCurrentHouse = id => {
+  return {
+    type: SET_CURRENT_HOUSE,
+    payload: id
   }
 }
 
@@ -86,47 +104,20 @@ export const streetsReducer = (state = initialState, action) => {
         return {
           ...state, streetsArr: updatedStreets
         }
-        case SET_CURRENT_FLAT:
+        case SET_CURRENT_STREET:
           return {
-            ...state, currentFlat: action.payload
+            ...state, currentStreet: action.payload
           }
-          case TOGGLE_HOUSE_MENU:
-            const updatedHousesOfStreets = state.streetsArr.map(item => {
-              if (item.streetId == action.payload.streetId) {
-                return {
-                  ...item,
-                  houses: item.houses.map(house => {
-                    if (house.houseId == action.payload.houseId) {
-                      return {
-                        ...house,
-                        isOpen: !house.isOpen
-                      }
-                    }
-                    return house
-                  })
-                }
-              }
-              return item
-            })
+          case SET_CURRENT_HOUSE:
             return {
-              ...state, streetsArr: updatedHousesOfStreets
+              ...state, currentHouse: action.payload
             }
-            case SET_HOUSES:
-              const updatedHousesOfStreet = state.streetsArr.map(item => {
-                if (item.streetId == action.payload.id) {
-                  return {
-                    ...item,
-                    houses: action.payload.arr
-                  }
-                }
-                return item
-              })
+            case SET_CURRENT_FLAT:
               return {
-                ...state,
-                streetsArr: updatedHousesOfStreet
+                ...state, currentFlat: action.payload
               }
-              case SET_FLATS:
-                const updatedFlatsOfHouse = state.streetsArr.map(item => {
+              case TOGGLE_HOUSE_MENU:
+                const updatedHousesOfStreets = state.streetsArr.map(item => {
                   if (item.streetId == action.payload.streetId) {
                     return {
                       ...item,
@@ -134,7 +125,7 @@ export const streetsReducer = (state = initialState, action) => {
                         if (house.houseId == action.payload.houseId) {
                           return {
                             ...house,
-                            flats: action.payload.arr
+                            isOpen: !house.isOpen
                           }
                         }
                         return house
@@ -144,11 +135,46 @@ export const streetsReducer = (state = initialState, action) => {
                   return item
                 })
                 return {
-                  ...state, streetsArr: updatedFlatsOfHouse
+                  ...state, streetsArr: updatedHousesOfStreets
                 }
+                case SET_HOUSES:
+                  const updatedHousesOfStreet = state.streetsArr.map(item => {
+                    if (item.streetId == action.payload.id) {
+                      return {
+                        ...item,
+                        houses: action.payload.arr
+                      }
+                    }
+                    return item
+                  })
+                  return {
+                    ...state,
+                    streetsArr: updatedHousesOfStreet
+                  }
+                  case SET_FLATS:
+                    const updatedFlatsOfHouse = state.streetsArr.map(item => {
+                      if (item.streetId == action.payload.streetId) {
+                        return {
+                          ...item,
+                          houses: item.houses.map(house => {
+                            if (house.houseId == action.payload.houseId) {
+                              return {
+                                ...house,
+                                flats: action.payload.arr
+                              }
+                            }
+                            return house
+                          })
+                        }
+                      }
+                      return item
+                    })
+                    return {
+                      ...state, streetsArr: updatedFlatsOfHouse
+                    }
 
-                default:
-                  return state
+                    default:
+                      return state
   }
 }
 

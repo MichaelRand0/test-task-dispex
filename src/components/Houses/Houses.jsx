@@ -3,7 +3,7 @@ import { House } from './House/House'
 
 export const Houses = (props) => {
   const housesElements = props.houses.map(item => {
-    return <House setCurrentFlat={props.setCurrentFlat} setResidents={props.setResidents} companyId={props.companyId} getFlatsThunk={props.getFlatsThunk} streetId={props.streetId} toggleHouseMenu={props.toggleHouseMenu} isOpen={item.isOpen} key={item.houseId} houseId={item.houseId} building={item.building} flats={item.flats} />
+    return <House setCurrentHouse={props.setCurrentHouse} setCurrentFlat={props.setCurrentFlat} setResidents={props.setResidents} companyId={props.companyId} getFlatsThunk={props.getFlatsThunk} streetId={props.streetId} toggleHouseMenu={props.toggleHouseMenu} isOpen={item.isOpen} key={item.houseId} houseId={item.houseId} building={item.building} flats={item.flats} />
   })
   return (
     <ul className={`${s.houses}`}>

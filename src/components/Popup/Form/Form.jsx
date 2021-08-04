@@ -23,6 +23,7 @@ export const Forma = props => {
           }
           props.closeForm()
           props.postResidentThunk(props.currentFlat, resident)
+          props.getFlatsThunk(props.companyId, props.currentStreet, props.currentHouse)
         }}>
         <Form className={s.form}>
           <ErrorMessage name="name" />
