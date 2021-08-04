@@ -13,6 +13,18 @@ export const housingAPI = {
   }
 }
 
+export const residentsAPI = {
+  postResident: resident => {
+    return instance.post(`HousingStock/client`, resident)
+  },
+  putResident: (AddressId, ClientId) => {
+    return instance.put(`/HousingStock/bind_client`, {
+      AddressId,
+      ClientId
+    })
+  }
+}
+
 export const companiesAPI = {
   getCompanies: () => {
     return instance.get(`Request/companies`)

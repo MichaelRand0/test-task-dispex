@@ -2,16 +2,20 @@
 
 .popup {
   max-width: 1000px;
+  min-height: 400px;
+  max-height: 600px;
+  height: 100%;
   width: 100%;
   position: absolute;
   border-radius: 15px;
-  top: 20%;
+  top: 40%;
   left: -100%;
   background-color: white;
   transform: translate(-50%, -50%);
   &__wrapper {
     position: relative;
     padding: 20px;
+    height: 100%;
   }
   &__close {
     position: absolute;
