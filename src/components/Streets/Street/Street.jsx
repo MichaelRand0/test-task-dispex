@@ -2,7 +2,7 @@ import { Houses } from '../../Houses/Houses'
 import { Toggle } from '../../Toggle/Toggle'
 import s from './Street.module.scss'
 
-export const Street = ({ streetId, companyId, getHousesThunk, getFlatsThunk, toggleStreetMenu, toggleHouseMenu, streetName, isOpen, houses }) => {
+export const Street = ({ streetId, setResidents, companyId, getHousesThunk, getFlatsThunk, toggleStreetMenu, toggleHouseMenu, streetName, isOpen, houses }) => {
   const toggleClickHandler = () => {
     getHousesThunk(companyId, streetId)
     toggleStreetMenu(streetId)
@@ -13,7 +13,7 @@ export const Street = ({ streetId, companyId, getHousesThunk, getFlatsThunk, tog
         <h2 className={s.name}>{`Улица ${streetName}`}</h2>
         <Toggle clickHandler={toggleClickHandler} isOpen={isOpen} />
       </div>
-      <Houses companyId={companyId} getFlatsThunk={getFlatsThunk} streetId={streetId} toggleHouseMenu={toggleHouseMenu} houses={houses} />
+      <Houses setResidents={setResidents} companyId={companyId} getFlatsThunk={getFlatsThunk} streetId={streetId} toggleHouseMenu={toggleHouseMenu} houses={houses} />
     </li>
   )
 }

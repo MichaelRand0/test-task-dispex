@@ -1,15 +1,18 @@
 import { Residents } from '../Residents/Residents'
 import './Popup.scss'
-import { CloseIcon } from './../icons/close';
+import { CloseIcon } from './../icons/close'
 
-export const Popup = () => {
+export const Popup = props => {
+  const closeHandler = () => {
+    props.closePopup()
+  }
   return (
-    <div className='popup'>
+    <div className={`popup`}>
       <div className='popup__wrapper'>
-        <button className='popup__close'>
+        <button onClick={closeHandler} className='popup__close'>
           <CloseIcon />
         </button>
-        <Residents />
+        <Residents residents={props.residents} />
       </div>
     </div>
   )

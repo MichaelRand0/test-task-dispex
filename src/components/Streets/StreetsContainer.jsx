@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { getFlatsThunk, toggleHouseMenu, toggleStreetMenu } from '../../redux/reducers/streetsReducer'
 import { Streets } from './Streets'
 import { getHousesThunk } from './../../redux/reducers/streetsReducer'
+import { setResidents } from '../../redux/reducers/popupReducer'
 
 const StreetsContainer = props => {
   return (
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => {
     toggleStreetMenu: id => dispatch(toggleStreetMenu(id)),
     toggleHouseMenu: (streetId, houseId) => dispatch(toggleHouseMenu(streetId, houseId)),
     getFlatsThunk: (companyId, streetId, houseId) => dispatch(getFlatsThunk(companyId, streetId, houseId)),
+    setResidents: arr => dispatch(setResidents(arr)),
     getHousesThunk: (companyId, streetId) => dispatch(getHousesThunk(companyId, streetId))
   }
 }

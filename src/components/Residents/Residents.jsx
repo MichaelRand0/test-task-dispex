@@ -2,15 +2,13 @@ import { AddIcon } from '../icons/add'
 import { Resident } from './Resident/Resident'
 import s from './Residents.module.scss'
 
-export const Residents = () => {
+export const Residents = props => {
+  const residentsElements = props.residents.map(item => {
+    return <Resident key={item.id} name={item.name} id={item.id} />
+  })
   return (
     <ul className={s.residents}>
-      <Resident />
-      <Resident />
-      <Resident />
-      <Resident />
-      <Resident />
-      <Resident />
+      {residentsElements}
       <li className={s.add}>
         <button>
           <AddIcon />
