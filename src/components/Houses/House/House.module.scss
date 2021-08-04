@@ -6,11 +6,25 @@
   border-radius: 15px;
   border: 2px solid #999;
   padding: 15px 10px;
+  overflow: hidden;
+  max-height: 70px;
   &:not(:last-child) {
     margin-bottom: 15px;
   }
   &:nth-child(odd) {
     margin-right: 15px;
+  }
+}
+
+.house_opened {
+  max-height: 300px;
+  overflow-y: auto;
+  .toggle {
+    transform: rotate(180deg);
+  }
+  ul {
+    overflow-y: auto;
+    max-height: 100%;
   }
 }
 

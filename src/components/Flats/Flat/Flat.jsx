@@ -1,7 +1,7 @@
 import s from './Flat.module.scss'
 
-export const Flat = () => {
+export const Flat = (props) => {
   return (
-    <button className={s.flat}>Квартира 1</button>
+    <button className={s.flat}>{`Квартира ${props.name}`}</button>
   )
 }

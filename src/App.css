@@ -30,6 +30,15 @@
   left: 50%;
 }
 
+.App_preloader-active .grey-bg {
+  opacity: 1;
+  left: 0;
+}
+
+.App_preloader-active .preloader {
+  display: block;
+}
+
 .App__title {
   margin-bottom: 25px;
 }

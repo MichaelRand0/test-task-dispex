@@ -1,10 +1,15 @@
-import { instance } from './instance'
+import {
+  instance
+} from './instance'
 export const housingAPI = {
   getStreets: companyId => {
     return instance.get(`HousingStock?companyId=${companyId}`).then(response => response)
   },
   getHouses: (companyId, streetId) => {
     return instance.get(`HousingStock?companyId=${companyId}&streetId=${streetId}`).then(response => response)
+  },
+  getFlats: (companyId, streetId, houseId) => {
+    return instance.get(`HousingStock?companyId=${companyId}&streetId=${streetId}&houseId=${houseId}`)
   }
 }
 
