@@ -18,10 +18,13 @@ export const residentsAPI = {
     return instance.post(`HousingStock/client`, resident)
   },
   putResident: (AddressId, ClientId) => {
-    return instance.put(`/HousingStock/bind_client`, {
+    return instance.put(`HousingStock/bind_client`, {
       AddressId,
       ClientId
     })
+  },
+  deleteResident: id => {
+    return instance.delete(`HousingStock/bind_client/${id}`)
   }
 }
 

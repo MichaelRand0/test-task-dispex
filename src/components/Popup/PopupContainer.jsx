@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { closePopup, openForm, postResidentThunk } from '../../redux/reducers/popupReducer'
+import { closePopup, deleteResidentThunk, openForm, postResidentThunk, setResidents } from '../../redux/reducers/popupReducer'
 import { Popup } from './Popup'
 import { closeForm } from './../../redux/reducers/popupReducer'
 
@@ -13,6 +13,7 @@ const mapStateToProps = state => {
   return {
     residents: state.popup.residents,
     isOpen: state.popup.isOpen,
+    currentFlat: state.streets.currentFlat,
     isPopupFormOpen: state.popup.isPopupFormOpen
   }
 }
@@ -22,7 +23,9 @@ const mapDispatchToProps = dispatch => {
     closePopup: () => dispatch(closePopup()),
     openForm: () => dispatch(openForm()),
     closeForm: () => dispatch(closeForm()),
-    postResidentThunk: resident => dispatch(postResidentThunk(resident))
+    setResidents: residents => dispatch(setResidents(residents)),
+    deleteResidentThunk: id => dispatch(deleteResidentThunk(id)),
+    postResidentThunk: (currentFlat, resident) => dispatch(postResidentThunk(currentFlat, resident))
   }
 }
 

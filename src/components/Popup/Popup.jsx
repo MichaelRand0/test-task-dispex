@@ -1,7 +1,7 @@
 import { Residents } from '../Residents/Residents'
 import './Popup.scss'
 import { CloseIcon } from './../icons/close'
-import { Form } from './Form/Form'
+import { Forma } from './Form/Form'
 
 export const Popup = props => {
   const closeHandler = () => {
@@ -13,8 +13,8 @@ export const Popup = props => {
         <button onClick={closeHandler} className='popup__close'>
           <CloseIcon />
         </button>
-        <Residents openForm={props.openForm} postResidentThunk={props.postResidentThunk} residents={props.residents} />
-        {props.isPopupFormOpen ? <Form closeForm={props.closeForm} /> : ''}
+        <Residents deleteResidentThunk={props.deleteResidentThunk} openForm={props.openForm} residents={props.residents} />
+        {props.isPopupFormOpen ? <Forma residents={props.residents} setResidents={props.setResidents} currentFlat={props.currentFlat} postResidentThunk={props.postResidentThunk} closeForm={props.closeForm} /> : ''}
       </div>
     </div>
   )

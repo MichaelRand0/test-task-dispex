@@ -13,7 +13,7 @@ export const House = (props) => {
         <h2 className={s.name}>Дом: {props.building}</h2>
         <Toggle clickHandler={toggleClickHandler} isOpen={props.isOpen} />
       </div>
-      <Flats setResidents={props.setResidents} flats={props.flats} />
+      <Flats setCurrentFlat={props.setCurrentFlat} setResidents={props.setResidents} flats={props.flats} />
     </li>
   )
 }

@@ -1,6 +1,6 @@
 @import '../../../general.scss';
 
-.form {
+.forma {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -10,10 +10,12 @@
   background-color: #242424;
   transform: translate(-50%, -50%);
 
-  form {
+  .form {
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
+    height: 100%;
   }
 
   .send {
@@ -31,7 +33,7 @@
     }
   }
 
-  input {
+  .field {
     width: 100%;
     padding: 8px 12px;
     font-size: 18px;

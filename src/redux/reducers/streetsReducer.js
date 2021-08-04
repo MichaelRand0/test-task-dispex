@@ -3,7 +3,8 @@ import {
 } from "../api/api"
 
 const initialState = {
-  streetsArr: []
+  streetsArr: [],
+  currentFlat: null
 }
 
 const SET_STREETS = 'SET_STREETS'
@@ -11,11 +12,19 @@ const TOGGLE_STREET_MENU = 'TOGGLE_STREET_MENU'
 const TOGGLE_HOUSE_MENU = 'TOGGLE_HOUSE_MENU'
 const SET_HOUSES = 'SET_HOUSES'
 const SET_FLATS = 'SET_FLATS'
+const SET_CURRENT_FLAT = 'SET_CURRENT_FLAT'
 
 export const setStreets = arr => {
   return {
     type: SET_STREETS,
     payload: arr
+  }
+}
+
+export const setCurrentFlat = id => {
+  return {
+    type: SET_CURRENT_FLAT,
+    payload: id
   }
 }
 
@@ -77,65 +86,69 @@ export const streetsReducer = (state = initialState, action) => {
         return {
           ...state, streetsArr: updatedStreets
         }
-        case TOGGLE_HOUSE_MENU:
-          const updatedHousesOfStreets = state.streetsArr.map(item => {
-            if (item.streetId == action.payload.streetId) {
-              return {
-                ...item,
-                houses: item.houses.map(house => {
-                  if (house.houseId == action.payload.houseId) {
-                    return {
-                      ...house,
-                      isOpen: !house.isOpen
-                    }
-                  }
-                  return house
-                })
-              }
-            }
-            return item
-          })
+        case SET_CURRENT_FLAT:
           return {
-            ...state, streetsArr: updatedHousesOfStreets
+            ...state, currentFlat: action.payload
           }
-          case SET_HOUSES:
-            const updatedHousesOfStreet = state.streetsArr.map(item => {
-              if (item.streetId == action.payload.id) {
+          case TOGGLE_HOUSE_MENU:
+            const updatedHousesOfStreets = state.streetsArr.map(item => {
+              if (item.streetId == action.payload.streetId) {
                 return {
                   ...item,
-                  houses: action.payload.arr
+                  houses: item.houses.map(house => {
+                    if (house.houseId == action.payload.houseId) {
+                      return {
+                        ...house,
+                        isOpen: !house.isOpen
+                      }
+                    }
+                    return house
+                  })
                 }
               }
               return item
             })
             return {
-              ...state,
-              streetsArr: updatedHousesOfStreet
+              ...state, streetsArr: updatedHousesOfStreets
             }
-            case SET_FLATS:
-              const updatedFlatsOfHouse = state.streetsArr.map(item => {
-                if (item.streetId == action.payload.streetId) {
+            case SET_HOUSES:
+              const updatedHousesOfStreet = state.streetsArr.map(item => {
+                if (item.streetId == action.payload.id) {
                   return {
                     ...item,
-                    houses: item.houses.map(house => {
-                      if (house.houseId == action.payload.houseId) {
-                        return {
-                          ...house,
-                          flats: action.payload.arr
-                        }
-                      }
-                      return house
-                    })
+                    houses: action.payload.arr
                   }
                 }
                 return item
               })
               return {
-                ...state, streetsArr: updatedFlatsOfHouse
+                ...state,
+                streetsArr: updatedHousesOfStreet
               }
+              case SET_FLATS:
+                const updatedFlatsOfHouse = state.streetsArr.map(item => {
+                  if (item.streetId == action.payload.streetId) {
+                    return {
+                      ...item,
+                      houses: item.houses.map(house => {
+                        if (house.houseId == action.payload.houseId) {
+                          return {
+                            ...house,
+                            flats: action.payload.arr
+                          }
+                        }
+                        return house
+                      })
+                    }
+                  }
+                  return item
+                })
+                return {
+                  ...state, streetsArr: updatedFlatsOfHouse
+                }
 
-              default:
-                return state
+                default:
+                  return state
   }
 }
 

@@ -61,11 +61,12 @@ export const popupReducer = (state = initialState, action) => {
   }
 }
 
-export const postResidentThunk = resident => dispatch => {
+export const postResidentThunk = (currentFlat, resident) => {
   residentsAPI.postResident(resident).then(response => {
-    console.log(response)
-    residentsAPI.putResident(191513, response.data.id).then(data => {
-      console.log(data)
-    })
+    residentsAPI.putResident(currentFlat, response.data.id)
   })
+}
+
+export const deleteResidentThunk = id => dispatch => {
+  residentsAPI.deleteResident(id)
 }
