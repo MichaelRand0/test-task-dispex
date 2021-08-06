@@ -2,15 +2,17 @@ import s from './House.module.scss'
 import { Toggle } from './../../Toggle/Toggle'
 import { Flats } from '../../Flats/Flats'
 
-export const House = (props) => {
+export const House = props => {
   const toggleClickHandler = () => {
     let currentHouse = props.currentHouse
-    props.toggleHouseMenu(props.streetId, props.houseId)
     props.setCurrentHouse(props.houseId)
-    if(currentHouse != props.houseId) {
-      console.log('запрос')
-      props.getFlatsThunk(props.companyId, props.streetId, props.houseId)
+    if (currentHouse != props.houseId) {
+      props.setIsLoadingTrue()
+      props.getFlatsThunk(props.companyId, props.streetId, props.houseId).then(() => {
+        props.setIsLoadingFalse()
+      })
     }
+    props.toggleHouseMenu(props.streetId, props.houseId)
   }
   return (
     <li id={props.id} className={`${s.house} ${props.isOpen ? s.house_opened : ''}`}>

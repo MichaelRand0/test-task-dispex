@@ -68,7 +68,7 @@ export const housesReducer = (state = initialState, action) => {
 }
 
 export const getHousesThunk = (companyId, streetId) => dispatch => {
-  housingAPI.getHouses(companyId, streetId).then(response => {
+  return housingAPI.getHouses(companyId, streetId).then(response => {
     let currentHouse = null
     const newStreetsArr = []
     response.data.forEach(item => {

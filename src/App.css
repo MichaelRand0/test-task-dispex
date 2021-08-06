@@ -18,6 +18,7 @@
   opacity: 0;
   transition: .2s linear all;
   background-color: #555555c5;
+  z-index: 100;
 }
 
 .App_popup-active .grey-bg {

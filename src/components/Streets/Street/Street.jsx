@@ -2,9 +2,12 @@ import { Houses } from '../../Houses/Houses'
 import { Toggle } from '../../Toggle/Toggle'
 import s from './Street.module.scss'
 
-export const Street = (props) => {
+export const Street = props => {
   const toggleClickHandler = () => {
-    props.getHousesThunk(props.companyId, props.streetId)
+    props.setIsLoadingTrue()
+    props.getHousesThunk(props.companyId, props.streetId).then(() => {
+      props.setIsLoadingFalse()
+    })
     props.toggleStreetMenu(props.streetId)
     props.setCurrentStreet(props.streetId)
   }

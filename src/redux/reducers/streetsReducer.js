@@ -63,7 +63,7 @@ export const streetsReducer = (state = initialState, action) => {
 }
 
 export const getStreetsThunk = companyId => dispatch => {
-  housingAPI.getStreets(companyId).then(response => {
+  return housingAPI.getStreets(companyId).then(response => {
     const newStreetsArr = []
     let currentStreet = null
     response.data.forEach(item => {

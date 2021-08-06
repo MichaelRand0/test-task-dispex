@@ -12,6 +12,7 @@
   left: -100%;
   background-color: white;
   transform: translate(-50%, -50%);
+  z-index: 300;
   &__wrapper {
     position: relative;
     padding: 20px;

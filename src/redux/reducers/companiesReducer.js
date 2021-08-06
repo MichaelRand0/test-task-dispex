@@ -36,7 +36,7 @@ export const companiesReducer = (state = initialState, action) => {
 }
 
 export const getCompaniesThunk = () => dispatch => {
-  companiesAPI.getCompanies().then(response => {
+  return companiesAPI.getCompanies().then(response => {
     dispatch(setCompanies(response.data))
   })
 }

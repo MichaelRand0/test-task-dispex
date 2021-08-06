@@ -44,7 +44,7 @@ export const flatsReducer = (state = initialState, action) => {
 }
 
 export const getFlatsThunk = (companyId, streetId, houseId) => dispatch => {
-  housingAPI.getFlats(companyId, streetId, houseId).then(response => {
+  return housingAPI.getFlats(companyId, streetId, houseId).then(response => {
     const flats = []
     response.data.forEach(item => {
       if (houseId == item.houseId) {

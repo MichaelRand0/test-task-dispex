@@ -7,7 +7,10 @@ import { getStreetsThunk } from './../../redux/reducers/streetsReducer'
 
 const CompaniesContainer = props => {
   useEffect(() => {
-    props.getCompaniesThunk()
+    props.setIsLoadingTrue()
+    props.getCompaniesThunk().then(() => {
+      props.setIsLoadingFalse()
+    })
   }, [])
   return (
     <Companies {...props} />
