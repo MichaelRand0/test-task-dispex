@@ -35,7 +35,6 @@ export const flatsReducer = (state = initialState, action) => {
         ...state, currentFlat: action.payload
       }
       case SET_FLATS:
-        debugger
         return {
           ...state, flatsArr: action.payload.arr
         }
