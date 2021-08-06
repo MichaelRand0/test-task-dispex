@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { closePopup, deleteResidentThunk, openForm, postResidentThunk, setResidents } from '../../redux/reducers/popupReducer'
 import { Popup } from './Popup'
 import { closeForm } from './../../redux/reducers/popupReducer'
-import { getFlatsThunk } from '../../redux/reducers/streetsReducer'
+import { getFlatsThunk } from '../../redux/reducers/flatsReducer'
 
 const PopupContainer = props => {
   return (
@@ -16,8 +16,8 @@ const mapStateToProps = state => {
     isOpen: state.popup.isOpen,
     companyId: state.companies.companyId,
     currentStreet: state.streets.currentStreet,
-    currentHouse: state.streets.currentHouse,
-    currentFlat: state.streets.currentFlat,
+    currentHouse: state.houses.currentHouse,
+    currentFlat: state.flats.currentFlat,
     isPopupFormOpen: state.popup.isPopupFormOpen
   }
 }

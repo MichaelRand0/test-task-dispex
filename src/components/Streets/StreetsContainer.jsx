@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-import { getFlatsThunk, setCurrentFlat, setCurrentHouse, setCurrentStreet, toggleHouseMenu, toggleStreetMenu } from '../../redux/reducers/streetsReducer'
+import { setCurrentStreet, toggleStreetMenu } from '../../redux/reducers/streetsReducer'
 import { Streets } from './Streets'
-import { getHousesThunk } from './../../redux/reducers/streetsReducer'
 import { setResidents } from '../../redux/reducers/popupReducer'
+import { getHousesThunk, setCurrentHouse, toggleHouseMenu } from '../../redux/reducers/housesReducer'
+import { getFlatsThunk, setCurrentFlat } from '../../redux/reducers/flatsReducer'
 
 const StreetsContainer = props => {
   return (
@@ -13,6 +14,8 @@ const StreetsContainer = props => {
 const mapStateToProps = state => {
   return {
     streets: state.streets.streetsArr,
+    housesArr: state.houses.housesArr,
+    flatsArr: state.flats.flatsArr,
     companyId: state.companies.companyId
   }
 }

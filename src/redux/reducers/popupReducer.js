@@ -63,6 +63,7 @@ export const popupReducer = (state = initialState, action) => {
 
 export const postResidentThunk = (currentFlat, resident) => {
   residentsAPI.postResident(resident).then(response => {
+    debugger
     residentsAPI.putResident(currentFlat, response.data.id)
   })
 }
