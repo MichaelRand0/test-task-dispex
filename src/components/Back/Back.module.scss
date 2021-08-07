@@ -1,0 +1,16 @@
+@import '../../general.scss';
+
+.back {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 60px;
+  svg {
+    transition: .06s linear fill;
+  }
+  &:hover {
+    svg {
+      fill: $main-c;
+    }
+  }
+}

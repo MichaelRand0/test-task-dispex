@@ -17,6 +17,7 @@ const mapStateToProps = state => {
     housesArr: state.houses.housesArr,
     flatsArr: state.flats.flatsArr,
     currentHouse: state.houses.currentHouse,
+    currentStreet: state.streets.currentStreet,
     companyId: state.companies.companyId
   }
 }

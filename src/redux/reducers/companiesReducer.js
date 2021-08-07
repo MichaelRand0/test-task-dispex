@@ -1,4 +1,6 @@
-import { companiesAPI } from "../api/api"
+import {
+  companiesAPI
+} from "../api/api"
 
 const initialState = {
   companyId: null,
@@ -7,6 +9,14 @@ const initialState = {
 
 export const CHANGE_COMPANY_ID = 'CHANGE_COMPANY_ID'
 export const SET_COMPANIES = 'SET_COMPANIES'
+const CHANGE_SCREEN = 'CHANGE_SCREEN'
+
+export const changeScreen = screen => {
+  return {
+    type: CHANGE_SCREEN,
+    payload: screen
+  }
+}
 
 export const changeCompanyId = id => {
   return {
@@ -25,13 +35,21 @@ export const setCompanies = arr => {
 export const companiesReducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_COMPANY_ID:
-      return {...state, companyId: action.payload}
-    
-    case SET_COMPANIES:
-      return {...state, companiesArr: action.payload}
-  
-    default:
-      return state
+      return {
+        ...state, companyId: action.payload
+      }
+
+      case SET_COMPANIES:
+        return {
+          ...state, companiesArr: action.payload
+        }
+        case CHANGE_SCREEN:
+          return {
+            ...state, companyId: null
+          }
+
+          default:
+            return state
   }
 }
 

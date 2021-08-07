@@ -4,7 +4,9 @@ import CompaniesContainer from './components/Companies/CompaniesContainer'
 import PopupContainer from './components/Popup/PopupContainer'
 import { Preloader } from './components/Preloader/Preloader'
 import StreetsContainer from './components/Streets/StreetsContainer'
-import { setIsLoadingFalse, setIsLoadingTrue } from './redux/reducers/appReducer';
+import { setIsLoadingFalse, setIsLoadingTrue } from './redux/reducers/appReducer'
+import { Back } from './components/Back/Back'
+import { changeScreen } from './redux/reducers/companiesReducer';
 
 const App = props => {
   const activeLoadingClass = props.isLoading ? 'App_preloader-active' : ''
@@ -21,6 +23,7 @@ const App = props => {
        setIsLoadingFalse={props.setIsLoadingFalse} />}
       <PopupContainer />
       <Preloader />
+      {props.companyId ? <Back changeScreen={props.changeScreen} /> : ''}
     </div>
   )
 }
@@ -36,7 +39,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setIsLoadingTrue: () => dispatch(setIsLoadingTrue()),
-    setIsLoadingFalse: () => dispatch(setIsLoadingFalse())
+    setIsLoadingFalse: () => dispatch(setIsLoadingFalse()),
+    changeScreen: () => dispatch(changeScreen())
   }
 }
 

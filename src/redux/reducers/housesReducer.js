@@ -51,7 +51,7 @@ export const housesReducer = (state = initialState, action) => {
               isOpen: !item.isOpen
             }
           }
-          return item
+          return {...item, isOpen: false}
         })
         return {
           ...state, housesArr: updatedHouses

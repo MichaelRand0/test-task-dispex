@@ -4,10 +4,13 @@ import s from './Street.module.scss'
 
 export const Street = props => {
   const toggleClickHandler = () => {
-    props.setIsLoadingTrue()
-    props.getHousesThunk(props.companyId, props.streetId).then(() => {
-      props.setIsLoadingFalse()
-    })
+    let currentStreet = props.currentStreet
+    if (currentStreet != props.streetId) {
+      props.setIsLoadingTrue()
+      props.getHousesThunk(props.companyId, props.streetId).then(() => {
+        props.setIsLoadingFalse()
+      })
+    }
     props.toggleStreetMenu(props.streetId)
     props.setCurrentStreet(props.streetId)
   }
